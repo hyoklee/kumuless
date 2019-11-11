@@ -7,6 +7,16 @@ kubectl create -f https://github.com/kubeless/kubeless/releases/download/$RELEAS
 kubectl get pods -n kubeless
 kubectl get deployment -n kubeless
 kubectl get customresourcedefinition
-
+export OS=$(uname -s| tr '[:upper:]' '[:lower:]')
+curl -OL https://github.com/kubeless/kubeless/releases/download/$RELEASE/kubeless_$OS-amd64.zip && unzip kubeless_$OS-amd64.zip && sudo mv bundles/kubeless_$OS-amd64/kubeless /usr/local/bin/
+kubeless function deploy hello --runtime python2.7 \
+                                --from-file test.py \
+                                --handler test.hello
+kubectl get functions
+kubeless function ls
+kubeless function call hello --data 'Hello world!'
+sls plugin install -n serverless-kubeless
+sls create --template kubeless-python
+sls invoke -f hello --log --data "Bob"
 # References
 # [1] https://kubeless.io/docs/quick-start/
