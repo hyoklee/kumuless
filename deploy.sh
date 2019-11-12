@@ -16,7 +16,14 @@ kubectl get functions
 kubeless function ls
 kubeless function call hello --data 'Hello world!'
 sls plugin install -n serverless-kubeless
+sls plugin install -n serverless-python-requirements
 sls create --template kubeless-python
 sls invoke -f hello --log --data "Bob"
+brew install minio
+export MINIO_REGION="us-east-1"
+export MINIO_ACCESS_KEY=admin
+export MINIO_SECRET_KEY=password
+brew services start minio
+# 
 # References
 # [1] https://kubeless.io/docs/quick-start/

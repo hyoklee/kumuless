@@ -1,0 +1,7 @@
+# pyarrow
+# pandas
+# zarr
+# gdal
+h5py
+# numpy
+

@@ -17,10 +17,27 @@ service: kumuless
 
 provider:
   name: kubeless
-  runtime: python2.7
-
+  runtime: python3.7
+  deploy:
+    strategy: S3ZipContent
+    options:
+      accessKeyId: 73BJMITDA739XC4M54SK
+      secretAccessKey: gCO1Xh+qJGWVbODIKC3eZ5qVHTvxpZ64K8D9pGv6
+      endpoint: http://localhost:9000
+      region: us-east-1
+      bucket: kumuless
+      s3ForcePathStyle: true
 plugins:
   - serverless-kubeless
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
+
 functions:
   hello:
     handler: handler.hello
+
+# References
+# [1] https://serverless.com/framework/docs/providers/kubeless/guide/deploying/
