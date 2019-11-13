@@ -24,6 +24,10 @@ export MINIO_REGION="us-east-1"
 export MINIO_ACCESS_KEY=admin
 export MINIO_SECRET_KEY=password
 brew services start minio
+kubeless function  deploy up --runtime python3.6 --from-file test.py --dependencies requirements.txt --handler test.hello
+kubeless function ls up
+kubeless function call up --data 'Hello world!'
+kubectl get pods
 # 
 # References
 # [1] https://kubeless.io/docs/quick-start/
