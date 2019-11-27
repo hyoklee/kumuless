@@ -7,7 +7,7 @@
 #    http://kubeless.io
 
 # Update the service name below with your own service name
-service: kumuless
+service: test
 
 # Please ensure the serverless-kubeless provider plugin is installed globally.
 # $ npm install -g serverless-kubeless
@@ -17,7 +17,7 @@ service: kumuless
 
 provider:
   name: kubeless
-  runtime: python3.7
+  runtime: python3.6
   deploy:
     strategy: S3ZipContent
     options:
@@ -37,7 +37,7 @@ custom:
 
 functions:
   hello:
-    handler: handler.hello
+    handler: test.hello
 
 # References
 # [1] https://serverless.com/framework/docs/providers/kubeless/guide/deploying/
