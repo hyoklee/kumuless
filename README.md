@@ -5,9 +5,10 @@ Framework.
 
 ## Deploy
 
-kumuless deploy
+```kumuless deploy```
 
 ## Clean up
 
-kumuless delete
+```kumuless delete```
+
 
